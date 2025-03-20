@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{.Profile.Name}} - Portfolio</title>
+	<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="#skills">Technical Skills</a></li>
+				<li><a href="#experience">Professional Experience</a></li>
+				<li><a href="#education">Education & Certifications</a></li>
+				<li><a href="#awards">Awards & Achievements</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<!-- About / Professional Summary -->
+		<section id="about">
+			<h1>{{.Profile.Name}}</h1>
+			<h2>{{.Profile.Title}}</h2>
+			<p>{{.Profile.Summary}}</p>
+			<a href="/static/resume.pdf" class="resume-btn">Download Resume</a>
+		</section>
+
+		<!-- Technical Skills -->
+		<section id="skills">
+			<h2>Technical Skills</h2>
+			{{range .Skills}}
+				<div class="skill-category">
+					<h3>{{.Category}}</h3>
+					<ul>
+						{{range .Items}}
+							<li>{{.}}</li>
+						{{end}}
+					</ul>
+				</div>
+			{{end}}
+		</section>
+
+		<!-- Professional Experience -->
+		<section id="experience">
+			<h2>Professional Experience</h2>
+			{{range .Experiences}}
+				<div class="experience-item">
+					<h3>{{.Title}} @ {{.Company}}</h3>
+					<p class="duration">{{.Duration}}</p>
+					<ul>
+						{{range .Description}}
+							<li>{{.}}</li>
+						{{end}}
+					</ul>
+					<p><strong>Technologies:</strong> {{join .Technologies ", "}}</p>
+				</div>
+			{{end}}
+		</section>
+
+		<!-- Education & Certifications -->
+		<section id="education">
+			<h2>Education & Certifications</h2>
+			<div class="education">
+				<h3>Education</h3>
+				{{range .Educations}}
+					<p>{{.Degree}}, {{.Institution}}, {{.Year}}</p>
+				{{end}}
+			</div>
+			<div class="certifications">
+				<h3>Certifications</h3>
+				<ul>
+					{{range .Certificates}}
+						<li>{{.Name}}</li>
+					{{end}}
+				</ul>
+			</div>
+		</section>
+
+		<!-- Awards & Achievements -->
+		<section id="awards">
+			<h2>Awards & Achievements</h2>
+			<ul>
+				{{range .Awards}}
+					<li><strong>{{.Name}}:</strong> {{.Description}}</li>
+				{{end}}
+			</ul>
+		</section>
+
+		<!-- Contact -->
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>{{.Profile.Contact}}</p>
+		</section>
+	</main>
+	<footer>
+		<p>© 2024 {{.Profile.Name}}. All rights reserved.</p>
+	</footer>
+</body>
+</html>
