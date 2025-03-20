@@ -1,3 +1,3 @@
 module github.com/AmarNathChary/AmarNathChary.github.io
 
-go 1.24.1
+go 1.24.0
